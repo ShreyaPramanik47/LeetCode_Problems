@@ -1,3 +1,4 @@
+// BETTER T.C=O(2N) 
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
@@ -25,5 +26,28 @@ public:
    for(int i=cnt1+cnt0;i<nums.size();i++){
        nums[i]=2;
    }
+    }
+};
+
+
+// OPTIMAL T.C-O(N) 
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int low=0 , mid=0 , high=nums.size()-1;
+        while(mid<=high){
+            if(nums[mid]==0){
+                swap(nums[low], nums[mid]);
+                low++;
+                mid++;
+            }
+            else if(nums[mid]==1){
+                mid++;
+            }
+            else{
+                swap(nums[high], nums[mid]);
+                high--;
+            }
+        }
     }
 };
